@@ -16,8 +16,9 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/{userId}")
-    public ResponseEntity<UserResponse> geUserProfile(@PostMapping int userId) {
-        userService.geUserProfile(userId);
+    public ResponseEntity<UserResponse> geUserProfile(@PathVariable String userId) {
+        UserResponse userResponse = userService.geUserProfile(userId);
+        return ResponseEntity.ok(userResponse);
     }
 
     @PostMapping("/register")
