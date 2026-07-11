@@ -37,8 +37,8 @@ public class UserService {
         return userResponse;
     }
 
-    public UserResponse geUserProfile(int userId) {
-        User user = userRepository.findById((long) userId)
+    public UserResponse geUserProfile(String userId) {
+        User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         UserResponse userResponse = new UserResponse();
