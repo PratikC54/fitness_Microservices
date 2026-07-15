@@ -5,7 +5,10 @@ import com.fitness.activityservice.dto.ActivityResponse;
 import com.fitness.activityservice.model.Activity;
 import com.fitness.activityservice.repository.ActivityRepository;
 import lombok.RequiredArgsConstructor;
+import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -44,5 +47,10 @@ public class ActivityService {
         response.setCreatedAt(savedActivity.getCreatedAt());
         response.setUpdatedAt(savedActivity.getUpdatedAt());
         return response;
+    }
+
+    public @Nullable List<Activity> getActivity() {
+
+       return activityRepository.findAll();
     }
 }
