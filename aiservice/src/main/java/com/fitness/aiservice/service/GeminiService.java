@@ -1,6 +1,7 @@
 package com.fitness.aiservice.service;
 
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -29,14 +30,15 @@ public class GeminiService {
                         Map.of("text", details)
                 })
         });
+
         String response = webClient.post()
                 .uri(geminiApiUrl)
-                .header("content-Type", "applciation/json")
+                .header("content-Type", "application/json")
                 .header("X-goog-api-key", geminiApiKey)
                 .bodyValue(requestBody)
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
-        return response ;
+        return response;
     }
 }
